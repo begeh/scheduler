@@ -34,7 +34,6 @@ const interviewers = [
 
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
-  const [interviewer, setInterviewer] = useState();
 
   return (
     <main className="layout">
@@ -58,13 +57,13 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="interviewers">
+      {/* <section className="interviewers">
         <InterviewerList
           interviewers={interviewers}
           interviewer={interviewer}
           setInterviewer={setInterviewer}
         />
-      </section>
+      </section> */}
       <section className="schedule">
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
