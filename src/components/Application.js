@@ -72,7 +72,7 @@ export default function Application(props) {
       .then((response) => {
         setDays(()=> response.data);
       });
-  }, [day])
+  }, [])
 
   const list = appointments.map(appointment =>
     <Appointment key={appointment.id} {...appointment} />
