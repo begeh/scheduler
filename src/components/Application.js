@@ -19,7 +19,7 @@ export default function Application(props) {
     interviewers: {}
   });
 
-  // const setDay = day => setState({ ...state, day });
+  const setDay = day => setState({ ...state, day });
 
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function Application(props) {
         axios.get(`api/appointments`),
         axios.get(`api/interviewers`)
       ]).then((all) => {
-        setState(prev => ({...state, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
+        setState(prev => ({ ...state, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
       });
     }
   })
@@ -61,7 +61,7 @@ export default function Application(props) {
           <DayList
             days={state.days}
             day={state.day}
-            setDay={day => setState({ ...state, day })}
+            setDay={setDay}
           />
         </nav>
         <img
