@@ -13,12 +13,9 @@ export function getAppointmentsForDay(state, day) {
   return appointments;
 }
 
-export function getInterview(state, interview){
-  if(interview){
-    let fullInterviewInfo = interview;
-    let interviewerId = interview.interviewer;
-    fullInterviewInfo.interviewer = state.interviewers[interviewerId];
-    return fullInterviewInfo;
+export function getInterview(state, interview) {
+  if (interview) {
+    return {"student" : interview.student, "interviewer": state.interviewers[interview.interviewer]};
   }
   return null;
 }
