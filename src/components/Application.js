@@ -23,7 +23,6 @@ export default function Application(props) {
 
 
   useEffect(() => {
-    if (state.days.length === 0) {
       Promise.all([
         axios.get(`api/days`),
         axios.get(`api/appointments`),
@@ -31,8 +30,7 @@ export default function Application(props) {
       ]).then((all) => {
         setState(prev => ({ ...state, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
       });
-    }
-  })
+  }, [])
 
   const appointments = getAppointmentsForDay(state, state.day);
 
