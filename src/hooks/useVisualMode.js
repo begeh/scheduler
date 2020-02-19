@@ -12,8 +12,13 @@ export default function useVisualMode(initial) {
 
   }
 
-  const transition = (mode) => {
-    setHistory(prev => [...history, mode]);
+  const transition = (mode, replace) => {
+    if (replace === true) {
+      const updatedHist = [...history].slice(0, (history.length - 1));
+      setHistory(prev => [...updatedHist, mode]);
+    } else {
+      setHistory(prev => [...history, mode]);
+    }
   };
 
   return (
