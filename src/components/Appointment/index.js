@@ -33,7 +33,7 @@ export default function Appointment(props) {
     transition(SAVING);
     props.bookInterview(props.id, interview)
       .then(() => transition(SHOW))
-      .catch(error => transition(ERROR_SAVE))
+      .catch(error => transition(ERROR_SAVE, true))
 
   }
 
@@ -73,7 +73,7 @@ export default function Appointment(props) {
             transition(DELETING);
             props.cancelInterview(props.id)
               .then(() => transition(EMPTY))
-              .catch(error => transition(ERROR_DELETE))
+              .catch(error => transition(ERROR_DELETE, true))
           }
           }
           message={"Are you sure you would like to delete?"} />
@@ -88,10 +88,16 @@ export default function Appointment(props) {
         />
       }
       {mode === ERROR_SAVE &&
-        <Error message={"Could not save"} />
+        <Error 
+        message={"Could not save"}
+        onClose={()=> back()} 
+        />
       }
       {mode === ERROR_DELETE &&
-        <Error message={"Could not delete"} />
+        <Error 
+        message={"Could not delete"}
+        onClose={()=> back()} 
+        />
       }
     </article>
   )
