@@ -37,10 +37,6 @@ export default function Appointment(props) {
 
   }
 
-  // const deleting = ()=>{
-  //   transition(CONFIRM);
-  // }
-
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -88,15 +84,15 @@ export default function Appointment(props) {
         />
       }
       {mode === ERROR_SAVE &&
-        <Error 
-        message={"Could not save"}
-        onClose={()=> back()} 
+        <Error
+          message={"Could not save"}
+          onClose={() => back()}
         />
       }
       {mode === ERROR_DELETE &&
-        <Error 
-        message={"Could not delete"}
-        onClose={()=> back()} 
+        <Error
+          message={"Could not delete"}
+          onClose={() => back()}
         />
       }
     </article>
