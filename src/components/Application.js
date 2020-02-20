@@ -32,8 +32,9 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-
     setState(prev => setState({...state, appointments}));
+    axios.put(`/api/appointments/${id}`, appointment)
+
   }
 
   useEffect(() => {
