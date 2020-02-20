@@ -50,7 +50,11 @@ export default function Appointment(props) {
         />
       )}
       {mode === CREATE &&
-        <Form onCancel={() => transition(EMPTY)} onSave={(name, interviewer) => save(name, interviewer)} interviewers={props.interviewers} />
+        <Form
+          onCancel={() => transition(EMPTY)}
+          onSave={(name, interviewer) => save(name, interviewer)}
+          interviewers={props.interviewers}
+        />
       }
       {mode === SAVING &&
         <Status message={"Saving"} />
@@ -70,7 +74,13 @@ export default function Appointment(props) {
           message={"Are you sure you would like to delete?"} />
       }
       {mode === EDIT &&
-        <Form onCancel={() => transition(SHOW)} onSave={(name, interviewer) => save(name, interviewer)} interviewers={props.interviewers} student={props.interview.student}/>
+        <Form
+          onCancel={() => transition(SHOW)}
+          onSave={(name, interviewer) => save(name, interviewer)}
+          interviewers={props.interviewers}
+          student={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+        />
       }
     </article>
   )
