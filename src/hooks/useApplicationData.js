@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 const axios = require('axios');
 
 const SET_DAY = "SET_DAY";
@@ -14,18 +14,20 @@ export default function useApplicationData() {
       appointments: {},
       interviewers: {}
     });
-    console.log(state);
+
+  //Sets day when selected in DaysList
   const setDay = day => dispatch({ type: SET_DAY, value: day });
+
 
   function reducer(state, action) {
     switch (action.type) {
-      case SET_DAY:{
+      case SET_DAY: {
         return {
           ...state,
           day: action.value
         }
       }
-      case SET_APPLICATION_DATA:{
+      case SET_APPLICATION_DATA: {
         return {
           ...state,
           days: action.value.days,
@@ -35,6 +37,30 @@ export default function useApplicationData() {
       }
       case SET_INTERVIEW:
         {
+
+          //spotChange sets and increment value for updating days.spots based on the action (i.e. Create, Edit, Delete)
+          let spotChange;
+          if (action.value.interview && !state.appointments[action.value.id].interview) {
+            spotChange = -1;
+          }
+          if (state.appointments[action.value.id].interview && !action.value.interview) {
+            spotChange = 1;
+          }
+          if (state.appointments[action.value.id].interview && action.value.interview) {
+            spotChange = 0;
+          }
+
+          //creates an array of days (newDays) that includes the updated number of spots for the day in the current state
+          let newDays = state.days.map(item => {
+            if (item.name !== state.day) {
+              return item;
+            }
+            return {
+              ...item,
+              spots: (item.spots + spotChange)
+            }
+          })
+
           const appointment = {
             ...state.appointments[action.value.id],
             interview: { ...action.value.interview }
@@ -44,9 +70,12 @@ export default function useApplicationData() {
             ...state.appointments,
             [action.value.id]: appointment
           };
+
+          //interview is set, appointments are updated and state.days is overriden with newDays, which has the updated number of spots
           return {
             ...state,
-            appointments
+            appointments,
+            days: newDays
           }
         }
       default:
@@ -56,6 +85,7 @@ export default function useApplicationData() {
     }
   }
 
+  //Books/edits an interview when called. Update is rendered locally and api endpoint (.../api/appointments) is updated
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -64,26 +94,28 @@ export default function useApplicationData() {
 
     return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
-         dispatch({ type: SET_INTERVIEW, value: {id, interview} });
+        dispatch({ type: SET_INTERVIEW, value: { id, interview } });
       });
 
   }
 
-  const cancelInterview = (id, interview = null) => {
+  //Cancels an inteview when called
+  const cancelInterview = (id, interview = false) => {
     return axios.delete(`/api/appointments/${id}`)
       .then((response) => {
-        dispatch({ type: SET_INTERVIEW, value: {id, interview: null} });
+        dispatch({ type: SET_INTERVIEW, value: { id, interview: null } });
       });
 
   }
 
+  //useEffect updates state when state is changed
   useEffect(() => {
     Promise.all([
       axios.get(`api/days`),
       axios.get(`api/appointments`),
       axios.get(`api/interviewers`)
     ]).then((all) => {
-      dispatch({type: SET_APPLICATION_DATA, value:{days: all[0].data, appointments: all[1].data, interviewers: all[2].data }});
+      dispatch({ type: SET_APPLICATION_DATA, value: { days: all[0].data, appointments: all[1].data, interviewers: all[2].data } });
     });
   }, [])
 
