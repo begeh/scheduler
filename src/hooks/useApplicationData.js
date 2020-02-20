@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 const axios = require('axios');
 
 const SET_DAY = "SET_DAY";
