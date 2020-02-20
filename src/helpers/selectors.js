@@ -25,7 +25,7 @@ export function getInterviewersForDay(state, day) {
   if (dayAppointments.length === 0) {
     return [];
   }
-  let interviewers = []
+  let interviewers = [];
   let intArr = dayAppointments[0].interviewers;
   for (let i = 0; i < intArr.length; i++) {
       interviewers.push(state.interviewers[intArr[i]]);
