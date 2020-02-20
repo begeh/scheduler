@@ -15,6 +15,7 @@ const CREATE = "CREATE";
 const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
+const EDIT = "EDIT";
 
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
@@ -32,9 +33,9 @@ export default function Appointment(props) {
 
   }
 
-  const deleting = ()=>{
-    transition(CONFIRM);
-  }
+  // const deleting = ()=>{
+  //   transition(CONFIRM);
+  // }
 
   return (
     <article className="appointment">
@@ -44,28 +45,32 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer.name}
-          onDelete={() => deleting()}
+          onDelete={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
         />
       )}
       {mode === CREATE &&
         <Form onCancel={() => transition(EMPTY)} onSave={(name, interviewer) => save(name, interviewer)} interviewers={props.interviewers} />
       }
       {mode === SAVING &&
-        <Status message={"Saving"}/>
+        <Status message={"Saving"} />
       }
       {mode === DELETING &&
-        <Status message={"Deleting"}/>
+        <Status message={"Deleting"} />
       }
       {mode === CONFIRM &&
-        <Confirm 
-        onCancel={() => transition(SHOW)} 
-        onConfirm ={() => {
-          transition(DELETING);
-          props.cancelInterview(props.id)
-            .then(() => transition(EMPTY))
-        } 
+        <Confirm
+          onCancel={() => transition(SHOW)}
+          onConfirm={() => {
+            transition(DELETING);
+            props.cancelInterview(props.id)
+              .then(() => transition(EMPTY))
+          }
+          }
+          message={"Are you sure you would like to delete?"} />
       }
-        message={"Are you sure you would like to delete?"}/>
+      {mode === EDIT &&
+        <Form onCancel={() => transition(SHOW)} onSave={(name, interviewer) => save(name, interviewer)} interviewers={props.interviewers} student={props.interview.student}/>
       }
     </article>
   )
