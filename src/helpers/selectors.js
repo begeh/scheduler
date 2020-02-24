@@ -22,13 +22,11 @@ export function getInterview(state, interview) {
 
 export function getInterviewersForDay(state, day) {
   const dayAppointments = state.days.filter(item => item.name === day);
-  console.log('dayAppointments:', dayAppointments)
   if (dayAppointments.length === 0) {
     return [];
   }
   let interviewers = [];
   let intArr = dayAppointments[0].interviewers;
-  console.log('intArr: ',intArr)
   for (let i = 0; i < intArr.length; i++) {
     interviewers.push(state.interviewers[intArr[i]]);
   }
