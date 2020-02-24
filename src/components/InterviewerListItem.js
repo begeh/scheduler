@@ -9,7 +9,6 @@ export default function InterviewerListItem(props) {
     {
       'interviewers__item': true,
       'interviewers__item--selected': props.selected,
-      // 'interviewers__item--selected interviewers__item-image': props.setInterviewer
     }
   )
   
