@@ -37,7 +37,7 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_SAVE, true))
 
   }
-
+  
   return (
     <article data-testid="appointment" className="appointment">
       <Header time={props.time} />

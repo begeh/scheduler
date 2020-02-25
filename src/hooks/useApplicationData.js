@@ -40,7 +40,8 @@ export default function useApplicationData() {
 
           //spotChange sets and increment value for updating days.spots based on the action (i.e. Create, Edit, Delete)
           let spotChange;
-          if (action.value.interview && !state.appointments[action.value.id].interview) {
+
+          if (action.value.interview && !state.appointments[action.value.id].interview){
             spotChange = -1;
           }
           if (state.appointments[action.value.id].interview && !action.value.interview) {
@@ -49,7 +50,7 @@ export default function useApplicationData() {
           if (state.appointments[action.value.id].interview && action.value.interview) {
             spotChange = 0;
           }
-
+          
           //creates an array of days (newDays) that includes the updated number of spots for the day in the current state
           let newDays = state.days.map(item => {
             if (item.name !== state.day) {
@@ -63,7 +64,7 @@ export default function useApplicationData() {
 
           const appointment = {
             ...state.appointments[action.value.id],
-            interview: { ...action.value.interview }
+            interview: action.value.interview
           };
 
           const appointments = {
