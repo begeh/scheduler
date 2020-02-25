@@ -80,7 +80,7 @@ export default function Appointment(props) {
           onCancel={() => transition(SHOW)}
           onSave={(name, interviewer) => save(name, interviewer)}
           interviewers={props.interviewers}
-          student={props.interview.student}
+          name={props.interview.student}
           interviewer={props.interview.interviewer.id}
         />
       }
