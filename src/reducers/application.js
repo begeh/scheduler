@@ -23,16 +23,13 @@ export default function reducer(state, action) {
       {
 
         //spotChange sets and increment value for updating days.spots based on the action (i.e. Create, Edit, Delete)
-        let spotChange;
+        let spotChange = 0;
 
         if (action.value.interview && !state.appointments[action.value.id].interview){
           spotChange = -1;
         }
         if (state.appointments[action.value.id].interview && !action.value.interview) {
           spotChange = 1;
-        }
-        if (state.appointments[action.value.id].interview && action.value.interview) {
-          spotChange = 0;
         }
         
         //creates an array of days (newDays) that includes the updated number of spots for the day in the current state
