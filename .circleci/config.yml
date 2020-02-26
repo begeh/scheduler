@@ -19,21 +19,21 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
 
-deploy:
-  machine:
-    enabled: true
+  deploy:
+    machine:
+      enabled: true
 
-  working_directory: ~/client
+    working_directory: ~/client
 
-  steps:
-    - add_ssh_keys:
-        fingerprints:
-          - "b6:b8:72:04:cd:8e:9f:6c:c3:06:91:e3:b9:8f:b1:36"
-    - checkout
-    - run:
-        name: Push Master to Production
-        command: |
-          git push https://github.com/begeh/scheduler.git master:production
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "ec:36:3d:ad:09:12:4d:69:fc:b9:7b:70:12:7e:8d:d7"
+      - checkout
+      - run:
+          name: Push Master to Production
+          command: |
+            git push https://github.com/begeh/scheduler.git master:production
 
 workflows:
   version: 2
