@@ -56,5 +56,5 @@
       "!src/index.js"
     ]
   },
-  "proxy": "http://interview-scheduler-app.herokuapp.com"
+  "proxy": "http://localhost:8001"
 }
