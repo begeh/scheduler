@@ -15,7 +15,7 @@ Interviewer is an app for creating, editing, and deleting interview appointments
 - PostgreSQL
 - Axios
 
-# Testing Technologies
+## Testing Technologies
 
 - Storybook
 - Cypress
