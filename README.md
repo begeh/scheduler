@@ -1,8 +1,6 @@
 # Interview Scheduler
 
-An app for creating, editing, and deleting interview appointments in real-time
-
-## Final Product
+Interviewer is an app for creating, editing, and deleting interview appointments in real-time. Made in ReactJS.
 
 ## Final Product
 
@@ -12,7 +10,7 @@ An app for creating, editing, and deleting interview appointments in real-time
 
 ## Dependencies
 
-- React
+- ReactJS
 - Express
 - PostgreSQL
 - Axios
