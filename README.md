@@ -1,5 +1,28 @@
 # Interview Scheduler
 
+An app for creating, editing, and deleting interview appointments in real-time
+
+## Final Product
+
+## Final Product
+
+!["Screenshot of Initial Page"](https://github.com/begeh/scheduler/blob/master/docs/initial_page.png)
+!["Screenshot of Editing"](https://github.com/begeh/scheduler/blob/master/docs/editing.png)
+!["Screenshot of Deleting"](https://github.com/begeh/scheduler/blob/master/docs/deleting.png)
+
+## Dependencies
+
+- React
+- Express
+- PostgreSQL
+- Axios
+
+# Testing Technologies
+
+- Storybook
+- Cypress
+- Jest
+
 ## Setup
 
 Install dependencies with `npm install`.
