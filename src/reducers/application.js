@@ -5,12 +5,12 @@ export const SET_INTERVIEW = "SET_INTERVIEW";
 export default function reducer(state, action) {
 
   switch (action.type) {
-    // case SET_DAY: {
-    //   return {
-    //     ...state,
-    //     day: action.value
-    //   }
-    // }
+    case SET_DAY: {
+      return {
+        ...state,
+        day: action.value
+      }
+    }
     case SET_APPLICATION_DATA: {
       return {
         ...state,
@@ -22,8 +22,7 @@ export default function reducer(state, action) {
     case SET_INTERVIEW:
       {
 
-        //spotChange sets and increment value for updating days.spots based on the action (i.e. Create, Edit, Delete). Default at 0 for 'Edit' action
-
+        //spotChange sets and increment value for updating days.spots based on the action (i.e. Create, Edit, Delete). Default at 0 for 'Edit' action.
         let spotChange = 0;
 
         if (action.value.interview && !state.appointments[action.value.id].interview){
