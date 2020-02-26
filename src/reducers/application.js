@@ -22,7 +22,8 @@ export default function reducer(state, action) {
     case SET_INTERVIEW:
       {
 
-        //spotChange sets and increment value for updating days.spots based on the action (i.e. Create, Edit, Delete)
+        //spotChange sets and increment value for updating days.spots based on the action (i.e. Create, Edit, Delete). Default at 0 for 'Edit' action
+        
         let spotChange = 0;
 
         if (action.value.interview && !state.appointments[action.value.id].interview){
