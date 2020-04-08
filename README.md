@@ -2,7 +2,7 @@
 
 Interviewer is an app for creating, editing, and deleting interview appointments in real-time. Made in ReactJS.
 
-** Access deployed app at https://5e56c333b68bcb01ac637fd8--adoring-neumann-ab7e4a.netlify.com/ (Deployed using Heroku, CircleCI, and Netlify) **
+** Access deployed app at https://interview-scheduler-app.netlify.com (Deployed using Heroku, CircleCI, and Netlify) **
 
 ## Final Product
 
