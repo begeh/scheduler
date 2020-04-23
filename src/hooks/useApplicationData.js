@@ -44,6 +44,10 @@ export default function useApplicationData() {
 
   //useEffect updates state when state is changed
   useEffect(() => {
+    let socket = new WebSocket("ws://localhost:8001");
+    socket.onopen = () => {
+      socket.send("ping!");
+    }
     Promise.all([
       axios.get(`/api/days`),
       axios.get(`/api/appointments`),
