@@ -45,17 +45,16 @@ export default function useApplicationData() {
   //useEffect updates state when state is changed
   useEffect(() => {
     let socket = new WebSocket("ws://localhost:8001");
-
+    
     socket.onopen = () => {
       socket.send("ping");
     }
 
     socket.onmessage = (event) => {
       console.log(`Message Received: ${event.data}`);
-      const newAppointment = JSON.parse(event.data);
-      if(newAppointment.type === "SET_INTERVIEW"){
-        console.log("Hello World!")
-      }
+      if(JSON.parse(event.data).type === "SET_INTERVIEW"){
+        dispatch({ type: SET_INTERVIEW, value: { id: JSON.parse(event.data).id , interview: JSON.parse(event.data).interview } });
+      };
     }
 
     Promise.all([
@@ -63,7 +62,9 @@ export default function useApplicationData() {
       axios.get(`/api/appointments`),
       axios.get(`/api/interviewers`)
     ]).then((all) => {
+      
       dispatch({ type: SET_APPLICATION_DATA, value: { days: all[0].data, appointments: all[1].data, interviewers: all[2].data } });
+
     });
   }, [])
 
