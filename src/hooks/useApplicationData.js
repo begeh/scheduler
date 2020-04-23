@@ -46,7 +46,10 @@ export default function useApplicationData() {
   useEffect(() => {
     let socket = new WebSocket("ws://localhost:8001");
     socket.onopen = () => {
-      socket.send("ping!");
+      socket.send("ping");
+    }
+    socket.onmessage = (event) => {
+      console.log(`Message Received: ${event.data}`);
     }
     Promise.all([
       axios.get(`/api/days`),
