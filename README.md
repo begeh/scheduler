@@ -1,6 +1,6 @@
 # Interview Scheduler
 
-Interviewer is an app for creating, editing, and deleting interview appointments in real-time. Page updates made across clients using Web Sockets. App is made in ReactJS. 
+Interviewer is an app for creating, editing, and deleting interview appointments in real-time. Page updates made across clients using WebSockets. Developed in ReactJS. 
 
 ** Access deployed app at https://interview-scheduler-app.netlify.com (Deployed using Heroku, CircleCI, and Netlify) **
 
