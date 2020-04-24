@@ -44,7 +44,7 @@ export default function useApplicationData() {
 
   //useEffect updates state when state is changed
   useEffect(() => {
-    let socket = new WebSocket("ws://localhost:8001");
+    let socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
     
     socket.onopen = () => {
       socket.send("ping");
