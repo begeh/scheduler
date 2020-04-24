@@ -51,7 +51,7 @@ export default function useApplicationData() {
     }
 
     socket.onmessage = (event) => {
-      console.log(`Message Received: ${event.data}`);
+      // console.log(`Message Received: ${event.data}`);
       if(JSON.parse(event.data).type === "SET_INTERVIEW"){
         dispatch({ type: SET_INTERVIEW, value: { id: JSON.parse(event.data).id , interview: JSON.parse(event.data).interview } });
       };
