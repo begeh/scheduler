@@ -32,9 +32,12 @@ export default function reducer(state, action) {
           spotChange = 1;
         }
         
+        const changedInterviewDay = state.days.filter(day => day.appointments.includes(action.value.id))[0].name;
+        
+
         //creates an array of days (newDays) that includes the updated number of spots for the day in the current state
         let newDays = state.days.map(item => {
-          if (item.name !== state.day) {
+          if (item.name !== changedInterviewDay) {
             return item;
           }
           return {
