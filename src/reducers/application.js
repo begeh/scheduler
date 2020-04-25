@@ -36,7 +36,7 @@ export default function reducer(state, action) {
         
 
         //creates an array of days (newDays) that includes the updated number of spots for the day in the current state
-        let newDays = state.days.map(item => {
+        const newDays = state.days.map(item => {
           if (item.name !== changedInterviewDay) {
             return item;
           }
