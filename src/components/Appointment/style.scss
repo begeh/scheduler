@@ -74,6 +74,10 @@ $appointment-height: 11rem;
       &:hover {
         color: darken($white, 5%);
         background-color: rgba($booked-color, $active-opacity);
+
+        section.appointment__card-left{
+          max-width: 75%;
+        }
       }
     }
 
