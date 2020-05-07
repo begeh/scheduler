@@ -48,7 +48,7 @@ export default function Form(props) {
             onSubmit={event => event.preventDefault()}
             onChange={(event) => setName(event.target.value)}
             value={name}
-            maxLength="50"
+            maxLength="30"
             data-testid="student-name-input"
           />
         </form>
